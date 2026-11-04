@@ -1,0 +1,19 @@
+.hero .hero-in{max-width:none;padding:0;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:min(680px,86vh);gap:0}
+.hero .hero-txt{align-self:center;max-width:none;padding:72px 56px 72px max(28px,calc((100vw - 1240px)/2 + 28px))}
+.hero .hero-txt h1{font-size:clamp(38px,4.6vw,62px);font-weight:500;line-height:1.05}
+.hero .hero-txt p{max-width:400px}
+.hero-photo{position:relative;container-type:inline-size;overflow:hidden;border-radius:0;background:#E8DDD0;min-height:420px}
+.hero-photo-img{object-fit:cover;object-position:50% 0}
+.hero-flame{position:absolute;left:33cqw;top:47.5cqw;width:20cqw;aspect-ratio:1;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,176,64,.5) 0%,rgba(255,160,50,.18) 45%,rgba(255,160,50,0) 72%);animation:aonGlow 3.4s ease-in-out infinite}
+.hero-txt>*{animation:aonRise .9s ease-out both}
+.hero-txt>p{animation-delay:.15s}
+.hero-txt>.hero-cta{animation-delay:.3s}
+@keyframes aonGlow{0%,100%{opacity:.75;transform:translate(-50%,-50%) scale(1)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}55%{opacity:.65;transform:translate(-50%,-50%) scale(.95)}80%{opacity:.95;transform:translate(-50%,-50%) scale(1.04)}}
+@keyframes aonRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:900px){
+ .hero .hero-in{grid-template-columns:1fr;min-height:0}
+ .hero-photo{order:-1;aspect-ratio:4/5;min-height:0;width:100%}
+ .hero .hero-txt{padding:32px 24px 52px}
+ .hero .hero-txt h1{font-size:clamp(34px,9vw,46px)}
+}
+@media(prefers-reduced-motion:reduce){.hero-flame,.hero-txt>*{animation:none}}

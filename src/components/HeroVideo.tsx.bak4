@@ -1,0 +1,103 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+/** Hero video: waits for the welcome intro, plays (hand lights the candle, zoom on the flame),
+ *  rests on the lit flame for a moment, then replays. Falls back to a still photo. */
+export function HeroVideo({ alt }: { alt: string }) {
+  const box = useRef<HTMLDivElement>(null);
+  const vid = useRef<HTMLVideoElement>(null);
+  const [still, setStill] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [dim, setDim] = useState(false);
+
+  useEffect(() => {
+    let off = false;
+    try {
+      off = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const c = (navigator as unknown as { connection?: { saveData?: boolean } }).connection;
+      if (c?.saveData) off = true;
+    } catch { /* ignore */ }
+    if (off) { setStill(true); return; }
+
+    const v = vid.current;
+    const el = box.current;
+    if (!v || !el) return;
+
+    let visible = true;
+    let started = false;
+    let dead = false;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const T = (f: () => void, ms: number) => void timers.push(setTimeout(f, ms));
+
+    const play = () => {
+      v.play().catch((e: unknown) => {
+        console.warn("hero video:", e);
+        if (e instanceof DOMException && e.name === "NotAllowedError") setStill(true);
+      });
+    };
+    const restart = () => {
+      if (dead) return;
+      setDim(true);
+      T(() => {
+        v.currentTime = 0;
+        setDim(false);
+        if (visible) play();
+      }, 450);
+    };
+    const onEnded = () => T(restart, 3000);
+    v.addEventListener("ended", onEnded);
+
+    // wait for the welcome intro (bee) to finish, then start
+    let waited = 0;
+    const wait = () => {
+      if (dead) return;
+      const busy = !!document.getElementById("intro") || !!document.getElementById("bee");
+      if (busy && waited < 9000) { waited += 250; T(wait, 250); return; }
+      started = true;
+      v.currentTime = 0;
+      if (visible) play();
+    };
+    T(wait, 400);
+
+    let io: IntersectionObserver | undefined;
+    try {
+      io = new IntersectionObserver(([e]) => {
+        if (!e) return;
+        visible = e.isIntersecting;
+        if (!started) return;
+        if (visible) { if (!v.ended) play(); } else v.pause();
+      }, { threshold: 0.1 });
+      io.observe(el);
+    } catch { /* ignore */ }
+
+    return () => {
+      dead = true;
+      timers.forEach(clearTimeout);
+      v.removeEventListener("ended", onEnded);
+      io?.disconnect();
+    };
+  }, []);
+
+  return (
+    <div className={`hero-video${dim ? " dim" : ""}`} ref={box} role="img" aria-label={alt}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="hv-poster" src="/videos/hero-candle-end.jpg" alt="" />
+      {!still && (
+        <video
+          ref={vid}
+          className={ready ? "on" : ""}
+          muted playsInline preload="auto"
+          aria-hidden="true"
+          onCanPlay={() => setReady(true)}
+          onError={() => setStill(true)}
+        >
+          <source src="/videos/hero-candle.webm" type="video/webm" />
+          <source src="/videos/hero-candle.mp4" type="video/mp4" />
+        </video>
+      )}
+      <span className="hv-glow" aria-hidden="true" />
+      <span className="hv-shade" aria-hidden="true" />
+    </div>
+  );
+}

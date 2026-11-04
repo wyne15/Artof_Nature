@@ -1,0 +1,60 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+/** Hero video: plays once (hand lights the candle, zoom on the flame) and rests on the lit frame. */
+export function HeroVideo({ alt }: { alt: string }) {
+  const box = useRef<HTMLDivElement>(null);
+  const vid = useRef<HTMLVideoElement>(null);
+  const [still, setStill] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let off = false;
+    try {
+      off = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const c = (navigator as unknown as { connection?: { saveData?: boolean } }).connection;
+      if (c?.saveData) off = true;
+    } catch { /* ignore */ }
+    if (off) { setStill(true); return; }
+
+    const v = vid.current;
+    const el = box.current;
+    if (!v || !el) return;
+    v.play().catch(() => setStill(true));
+
+    let io: IntersectionObserver | undefined;
+    try {
+      io = new IntersectionObserver(([e]) => {
+        if (!e) return;
+        if (e.isIntersecting) {
+          if (!v.ended) v.play().catch(() => {});
+        } else v.pause();
+      }, { threshold: 0.1 });
+      io.observe(el);
+    } catch { /* ignore */ }
+    return () => io?.disconnect();
+  }, []);
+
+  return (
+    <div className="hero-video" ref={box} role="img" aria-label={alt}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="hv-poster" src="/videos/hero-candle-end.jpg" alt="" />
+      {!still && (
+        <video
+          ref={vid}
+          className={ready ? "on" : ""}
+          muted playsInline autoPlay preload="auto"
+          aria-hidden="true"
+          onCanPlay={() => setReady(true)}
+          onError={() => setStill(true)}
+        >
+          <source src="/videos/hero-candle.webm" type="video/webm" />
+          <source src="/videos/hero-candle.mp4" type="video/mp4" />
+        </video>
+      )}
+      <span className="hv-glow" aria-hidden="true" />
+      <span className="hv-shade" aria-hidden="true" />
+    </div>
+  );
+}

@@ -1,0 +1,30 @@
+.hero{position:relative;background:var(--olive-d);overflow:hidden;padding-bottom:26px}
+.hero .hero-in{max-width:1240px;margin:0 auto;padding:0 28px;display:flex;align-items:center;min-height:min(660px,86vh);position:relative;z-index:2;grid-template-columns:none}
+.hero .hero-txt{max-width:520px;padding:72px 0 88px}
+.hero-bg{position:absolute;top:0;right:0;bottom:0;width:70%;z-index:0}
+.hero-bg-img{object-fit:cover;object-position:50% 32%}
+.hero-fade-l{position:absolute;inset:0;background:linear-gradient(90deg,#2F3817 0%,rgba(47,56,23,.78) 26%,rgba(47,56,23,0) 62%)}
+.hero-fade-b{position:absolute;inset:0;background:linear-gradient(0deg,#2F3817 0%,rgba(47,56,23,0) 28%)}
+.hero-eyebrow{font-size:12px;letter-spacing:.22em;color:var(--gold);font-weight:500;margin:0 0 14px}
+.hero .hero-txt h1{font-size:clamp(36px,4.4vw,60px);font-weight:500;line-height:1.06}
+.hero .script{font-family:var(--font-script),'Parisienne',cursive;font-weight:400;color:#EBCB7D;font-size:1.3em;line-height:1}
+.hero-hex{position:absolute;top:22px;right:24%;width:120px;z-index:1;opacity:.8}
+.hero-drip{position:absolute;left:0;bottom:-1px;width:100%;height:26px;z-index:3;fill:var(--cream)}
+.hero-drip path{transform-box:fill-box;transform-origin:top;animation:aonDrip 5s ease-in-out infinite}
+.hero-txt>*{animation:aonRise .9s ease-out both}
+.hero-txt>h1{animation-delay:.1s}
+.hero-txt>p{animation-delay:.25s}
+.hero-txt>.hero-cta{animation-delay:.4s}
+@keyframes aonRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes aonDrip{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.25)}}
+@media(max-width:900px){
+ .hero-bg{position:relative;width:100%;aspect-ratio:4/5;top:auto;right:auto;bottom:auto}
+ .hero-bg-img{object-position:50% 18%}
+ .hero-fade-l{display:none}
+ .hero-fade-b{background:linear-gradient(0deg,#2F3817 0%,rgba(47,56,23,0) 42%)}
+ .hero .hero-in{display:block;min-height:0;padding:0 24px;margin-top:-70px}
+ .hero .hero-txt{max-width:none;padding:0 0 64px}
+ .hero .hero-txt h1{font-size:clamp(34px,9vw,46px)}
+ .hero-hex{display:none}
+}
+@media(prefers-reduced-motion:reduce){.hero-txt>*,.hero-drip path{animation:none}}
