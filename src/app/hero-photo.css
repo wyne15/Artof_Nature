@@ -52,3 +52,33 @@
   .hero .hero-txt h1{font-size:clamp(30px,8.6vw,42px)}
   .hero .script{color:#F4DC93}
 }
+
+/* ---------- Hero text: refined serif title, gold rule, soft subtitle ---------- */
+.hero .hero-txt h1{font-weight:500;letter-spacing:-.01em;line-height:1.08;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero .hero-rule{display:block;width:56px;height:1px;margin:22px 0 18px;background:linear-gradient(90deg,transparent,#D9B45A,transparent)}
+.hero .hero-txt p{font-weight:300;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:rgba(251,246,234,.9);margin:0 0 30px}
+.hero .hero-txt>h1{animation-delay:.2s}
+.hero .hero-txt>.hero-rule{animation-delay:.6s}
+.hero .hero-txt>p{animation-delay:.8s}
+.hero .hero-txt>.hero-cta{animation-delay:1.05s}
+.hero .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.hero .hero-cta .btn-gold{box-shadow:0 8px 24px rgba(0,0,0,.3);transition:transform .25s ease,box-shadow .25s ease,background .2s}
+.hero .hero-cta .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+@media(max-width:900px){
+  .hero .hero-txt{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .hero .hero-txt h1{font-size:clamp(34px,10vw,48px)}
+  .hero .hero-txt h1+.hero-rule+p{max-width:26em}
+  .hero .hero-cta{justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){.hero .hero-cta .btn-gold{transition:none}.hero .hero-cta .btn-gold:hover{transform:none}}
+
+/* ---------- Phones: whole hero fits one screen (video on top, text + button visible without scrolling) ---------- */
+@media(max-width:900px){
+  .hero .hero-in{min-height:max(640px,calc(100svh - 150px))}
+  .hero .hero-art{height:63%}
+  .hv-shade{background:linear-gradient(180deg,rgba(20,25,10,.2) 0%,rgba(20,25,10,0) 12%,rgba(30,36,16,0) 46%,rgba(30,36,16,.05) 56%,rgba(30,36,16,.16) 65%,rgba(30,36,16,.34) 74%,rgba(30,36,16,.58) 83%,rgba(30,36,16,.84) 92%,#1E2410 100%)}
+  .hero .hero-txt{padding:0 0 44px}
+  .hero .hero-rule{margin:16px 0 14px}
+  .hero .hero-txt p{margin:0 0 22px;text-wrap:balance}
+  .hero .hero-txt h1{font-size:clamp(32px,9.2vw,44px)}
+}

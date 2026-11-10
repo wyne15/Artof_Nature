@@ -27,8 +27,8 @@ export const ro: Dict = {
     paused: "Comenzile sunt oprite temporar până pe {date}. Te rugăm să revii atunci.",
   },
   hero: {
-    h1: "Lumânări și balsamuri din ceară de albine, turnate manual",
-    sub: "Turnate manual, în loturi mici, în Anglia.",
+    h1: "Arta de a păstra lucrurile simple",
+    sub: "Inspirate din natură și făcute să facă parte din ziua ta.",
     cta: "Vezi colecția",
     story: "Citește povestea noastră",
     skip: "Treci peste",

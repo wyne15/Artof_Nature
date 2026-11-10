@@ -29,8 +29,8 @@ export const en = {
     paused: "Orders are paused until {date}. Please come back then.",
   },
   hero: {
-    h1: "Hand-poured beeswax candles and balms",
-    sub: "Poured by hand in small batches, in England.",
+    h1: "The art of keeping things simple",
+    sub: "Inspired by nature and made to be part of your day.",
     cta: "Shop the collection",
     story: "Read our story",
     skip: "Skip",

@@ -31,8 +31,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const all = (await listProducts()).map((p) => localize(p, lang));
   const best = [...all.filter((p) => p.tag === "best_seller" || p.tag === "popular"), ...all.filter((p) => p.tag !== "best_seller" && p.tag !== "popular")].slice(0, 3);
   const h = t.home;
-  const [firstWord, ...restWords] = t.hero.h1.split(" ");
-  const eyebrow = lang === "ro" ? "FĂCUT MANUAL ÎN ANGLIA" : "HANDMADE IN ENGLAND";
 
   return (
     <>
@@ -46,8 +44,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <section className={`hero ${script.variable}`}>
         <div className="hero-in">
           <div className="hero-txt">
-            <div className="hero-eyebrow">{eyebrow}</div>
-            <h1><span className="script">{firstWord}</span><br />{restWords.join(" ")}</h1>
+            <h1>{t.hero.h1}</h1>
+            <span className="hero-rule" aria-hidden="true" />
             <p>{t.hero.sub}</p>
             <div className="hero-cta">
               <Link className="btn btn-gold" href={`/${lang}/shop`}>{t.hero.cta}</Link>
