@@ -583,3 +583,19 @@ html body #introSkip{top:calc(128px + env(safe-area-inset-top,0px));right:14px;b
   .st-photo{max-width:320px}
   .st-banner img{aspect-ratio:4/3}
 }
+
+/* st-fix2: Our story layout polish (new owner photo: portrait, gold offset frame, drop cap) */
+.st-photo{position:relative}
+.st-photo::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid rgba(201,167,74,.6);border-radius:20px;z-index:0;pointer-events:none}
+.st-photo img{position:relative;z-index:1;aspect-ratio:3/4;object-position:50% 30%}
+.st-text p:first-child::first-letter{font-family:var(--serif);font-size:3.2em;line-height:.85;float:left;margin:8px 12px 0 0;color:var(--olive);font-weight:600}
+.st-text p{max-width:54ch}
+@media(min-width:761px){
+  .st-letter{grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:72px;padding-top:24px;padding-bottom:24px}
+}
+@media(max-width:760px){
+  .st-photo{max-width:340px}
+  .st-photo::before{inset:10px -8px -10px 8px}
+  .st-intro{padding-bottom:36px}
+  .st-letter{padding-top:12px}
+}

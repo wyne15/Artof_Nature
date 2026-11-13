@@ -22,7 +22,7 @@ export default async function Story({ params }: P) {
   const story = STORY_TEXT[lang];
   const b = story.body;
   const ro = lang === "ro";
-  const ownerAlt = ro ? "Fondatoarea The Art of Nature ținând lumânări din ceară de albine" : "The founder of The Art of Nature holding beeswax candles";
+  const ownerAlt = ro ? "Fondatoarea The Art of Nature ținând ceară de albine brută în fața atelierului" : "The founder of The Art of Nature holding raw beeswax outside her workshop";
   const candlesAlt = ro ? "Lumânări din ceară de albine într-un coș de răchită" : "Beeswax candles in a wicker basket";
   return (
     <>
@@ -34,7 +34,7 @@ export default async function Story({ params }: P) {
       <section className="sec st-letter">
         <Reveal className="st-photo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/owner.jpg" alt={ownerAlt} width={1066} height={1600} loading="eager" decoding="async" />
+          <img src="/images/owner-beeswax.jpg" alt={ownerAlt} width={1086} height={1448} loading="eager" decoding="async" />
         </Reveal>
         <Reveal className="st-text" delay={120}>
           <p>{b[1]}</p>
@@ -74,11 +74,6 @@ export default async function Story({ params }: P) {
       </section>
 
       <Hexdiv />
-      <section className="sec">
-        <div className="sec-head"><h2>{s.whyH}</h2></div>
-        <div className="steps">{s.why.map((w) => <div className="step" key={w.h}><h3>{w.h}</h3><p>{w.p}</p></div>)}</div>
-      </section>
-
       <section className="sec">
         <div className="sec-head"><h2>{s.natureH}</h2></div>
         <div className="steps">{s.nature.map((w) => <div className="step" key={w.h}><h3>{w.h}</h3><p>{w.p}</p></div>)}</div>
