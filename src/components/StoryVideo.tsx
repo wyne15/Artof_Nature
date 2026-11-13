@@ -1,46 +1,10 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-
-export function StoryVideo({ src, label }: { src: string; label: string }) {
-  const box = useRef<HTMLDivElement>(null);
-  const ref = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const v = ref.current;
-    const el = box.current;
-    if (!v || !el) return;
-    v.muted = true;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      v.pause();
-      return;
-    }
-    const play = () => {
-      v.play().catch(() => {
-        /* autoplay blocked: the first frame stays visible */
-      });
-    };
-    let io: IntersectionObserver | undefined;
-    try {
-      io = new IntersectionObserver(
-        ([e]) => {
-          if (!e) return;
-          if (e.isIntersecting) play();
-          else v.pause();
-        },
-        { threshold: 0.25 },
-      );
-      io.observe(el);
-    } catch {
-      play();
-    }
-    return () => io?.disconnect();
-  }, []);
-
+/** Story image: photo of raw beeswax blocks (replaces the old pouring-wax video).
+ *  Same name/props as before so page.tsx and story/page.tsx do not change
+ *  (the old `src` video path is accepted but no longer used).
+ *  Old video version: StoryVideo.tsx.bak-video */
+export function StoryVideo({ label }: { src?: string; label: string }) {
   return (
     <div
-      ref={box}
       style={{
         width: "100%",
         maxWidth: 420,
@@ -53,15 +17,13 @@ export function StoryVideo({ src, label }: { src: string; label: string }) {
         background: "#F7F3EB",
       }}
     >
-      <video
-        ref={ref}
-        src={`${src}#t=0.1`}
-        aria-label={label}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/beeswax-blocks.jpg"
+        alt={label}
+        loading="lazy"
+        decoding="async"
+        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%", display: "block" }}
       />
     </div>
   );

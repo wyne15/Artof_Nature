@@ -41,7 +41,7 @@ export const en = {
     storyH: "Poured in small batches, in England",
     storyP1: "Every candle and balm starts with natural beeswax. We pour in small batches so each one gets proper attention.",
     storyP2: "If you have a question about what goes into a product, just ask. We are happy to tell you.",
-    storyImgAlt: "Honeycomb illustration",
+    storyImgAlt: "Blocks of raw beeswax",
     stepsH: "From hive to your door",
     steps: [
       { h: "Natural beeswax", p: "We start with natural beeswax, the same material the bees use to build their comb." },

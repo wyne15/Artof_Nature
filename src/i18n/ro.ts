@@ -39,7 +39,7 @@ export const ro: Dict = {
     storyH: "Turnate în loturi mici, în Anglia",
     storyP1: "Fiecare lumânare și fiecare balsam începe cu ceară naturală de albine. Lucrăm în loturi mici, ca fiecare produs să primească atenția cuvenită.",
     storyP2: "Dacă ai o întrebare despre ce conține un produs, întreabă-ne. Îți spunem cu drag.",
-    storyImgAlt: "Ilustrație cu fagure de miere",
+    storyImgAlt: "Blocuri de ceară de albine brută",
     stepsH: "De la stup la ușa ta",
     steps: [
       { h: "Ceară naturală de albine", p: "Pornim de la ceară naturală de albine, același material din care albinele își construiesc fagurele." },

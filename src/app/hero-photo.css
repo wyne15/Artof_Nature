@@ -82,3 +82,11 @@
   .hero .hero-txt p{margin:0 0 22px;text-wrap:balance}
   .hero .hero-txt h1{font-size:clamp(32px,9.2vw,44px)}
 }
+
+/* ---------- Phones: candles photo shown whole (3:4), smooth fade into the green, text below ---------- */
+@media(max-width:900px){
+  .hero .hero-in{min-height:max(calc(min(133.4vw,640px) + 300px),calc(100svh - 110px))}
+  .hero .hero-art{bottom:auto;width:100%;height:auto;aspect-ratio:3/4;max-height:640px}
+  .hero-video .hv-poster{object-position:50% 50%}
+  .hv-shade{background:linear-gradient(180deg,rgba(20,25,10,.12) 0%,rgba(20,25,10,0) 12%,rgba(30,36,16,0) 62%,rgba(30,36,16,.06) 68%,rgba(30,36,16,.16) 74%,rgba(30,36,16,.32) 80%,rgba(30,36,16,.52) 86%,rgba(30,36,16,.74) 92%,rgba(30,36,16,.92) 97%,#1E2410 100%)}
+}
