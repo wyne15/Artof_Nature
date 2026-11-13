@@ -97,6 +97,12 @@ export const en = {
       { h: "It protects skin", p: "In balms, beeswax forms a light barrier that helps skin hold on to moisture." },
       { h: "It is made in small batches", p: "Small batches mean each candle and balm gets proper attention." },
     ],
+    natureH: "The art of working with nature",
+    nature: [
+      { h: "From the hive", p: "We use natural beeswax in our candles for the soft, golden light it gives." },
+      { h: "Simple ingredients for everyday care", p: "Our skincare brings together natural oils, butters and beeswax." },
+      { h: "A small business in England", p: "We make our candles and skincare by hand, a few at a time." },
+    ],
   },
   faq: {
     h1: "Frequently asked questions", more: "Cannot find your answer?", getInTouch: "Get in touch",

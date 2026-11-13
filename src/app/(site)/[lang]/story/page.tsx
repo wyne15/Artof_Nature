@@ -78,6 +78,11 @@ export default async function Story({ params }: P) {
         <div className="sec-head"><h2>{s.whyH}</h2></div>
         <div className="steps">{s.why.map((w) => <div className="step" key={w.h}><h3>{w.h}</h3><p>{w.p}</p></div>)}</div>
       </section>
+
+      <section className="sec">
+        <div className="sec-head"><h2>{s.natureH}</h2></div>
+        <div className="steps">{s.nature.map((w) => <div className="step" key={w.h}><h3>{w.h}</h3><p>{w.p}</p></div>)}</div>
+      </section>
     </>
   );
 }

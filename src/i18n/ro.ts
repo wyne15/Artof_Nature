@@ -95,6 +95,12 @@ export const ro: Dict = {
       { h: "Protejează pielea", p: "În balsamuri, ceara de albine formează o barieră ușoară care ajută pielea să-și păstreze hidratarea." },
       { h: "Se face în loturi mici", p: "Loturile mici înseamnă că fiecare lumânare și fiecare balsam primește atenția cuvenită." },
     ],
+    natureH: "Arta de a lucra cu natura",
+    nature: [
+      { h: "Din stup", p: "Folosim ceară naturală de albine în lumânările noastre, pentru lumina blândă și aurie pe care o oferă." },
+      { h: "Ingrediente simple pentru îngrijirea de zi cu zi", p: "Produsele noastre de îngrijire îmbină uleiuri naturale, unturi și ceară de albine." },
+      { h: "O afacere mică din Anglia", p: "Ne facem lumânările și produsele de îngrijire manual, câteva odată." },
+    ],
   },
   faq: {
     h1: "Întrebări frecvente", more: "Nu ai găsit răspunsul?", getInTouch: "Scrie-ne",
