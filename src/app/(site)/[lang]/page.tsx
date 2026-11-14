@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { Hexdiv, ProductCard } from "@/components/ProductCard";
-import { HeroVideo } from "@/components/HeroVideo";
 import { Intro } from "@/components/Intro";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { StoryVideo } from "@/components/StoryVideo";
@@ -41,7 +40,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       />
       <Intro skip={t.hero.skip} brand={BUSINESS.brand} />
 
-      <section className={`hero ${script.variable}`}>
+      <section className={`hero hero-solo ${script.variable}`}>
         <div className="hero-in">
           <div className="hero-txt">
             <h1>{t.hero.h1}</h1>
@@ -51,9 +50,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               <Link className="btn btn-gold" href={`/${lang}/shop`}>{t.hero.cta}</Link>
               <Link className="btn btn-ghost" href={`/${lang}/story`}>{t.hero.story}</Link>
             </div>
-          </div>
-          <div className="hero-art">
-            <HeroVideo alt={t.hero.imgAlt} />
           </div>
         </div>
         <svg className="hero-drip" viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true">

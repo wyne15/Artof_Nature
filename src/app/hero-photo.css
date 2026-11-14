@@ -90,3 +90,25 @@
   .hero-video .hv-poster{object-position:50% 50%}
   .hv-shade{background:linear-gradient(180deg,rgba(20,25,10,.12) 0%,rgba(20,25,10,0) 12%,rgba(30,36,16,0) 62%,rgba(30,36,16,.06) 68%,rgba(30,36,16,.16) 74%,rgba(30,36,16,.32) 80%,rgba(30,36,16,.52) 86%,rgba(30,36,16,.74) 92%,rgba(30,36,16,.92) 97%,#1E2410 100%)}
 }
+
+/* ---------- Hero without a photo: centred text on the green background (client request) ----------
+   To bring the photo back: restore <HeroVideo/> in page.tsx and remove "hero-solo" from the section class. */
+.hero.hero-solo{background:radial-gradient(ellipse 75% 95% at 50% 40%,#2C3716 0%,#222A12 55%,#1E2410 100%)}
+.hero.hero-solo::before{animation:aonHexDrift 60s linear infinite;-webkit-mask-image:radial-gradient(ellipse 80% 90% at 50% 45%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 80% 90% at 50% 45%,#000 30%,transparent 100%)}
+.hero.hero-solo::after{content:"";position:absolute;left:50%;top:44%;width:min(980px,130vw);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;z-index:1;background:radial-gradient(closest-side,rgba(212,168,67,.17),rgba(212,168,67,.05) 55%,transparent);animation:aonGlow 8s ease-in-out infinite}
+.hero.hero-solo .hero-in{display:flex;justify-content:center;text-align:center;min-height:min(640px,84vh);padding:0 24px}
+.hero.hero-solo .hero-txt{max-width:800px;padding:104px 0 124px;display:flex;flex-direction:column;align-items:center}
+.hero.hero-solo .hero-txt h1{font-size:clamp(40px,6.4vw,80px);line-height:1.06;text-wrap:balance}
+.hero.hero-solo .hero-rule{width:72px;margin:28px 0 22px}
+.hero.hero-solo .hero-txt p{max-width:34em;font-size:clamp(17px,1.7vw,20px);text-wrap:balance;margin:0 0 34px}
+.hero.hero-solo .hero-cta{justify-content:center}
+@keyframes aonHexDrift{from{background-position:0 0}to{background-position:242px 420px}}
+@keyframes aonGlow{0%,100%{opacity:.75;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07)}}
+@media(max-width:900px){
+  .hero.hero-solo .hero-in{min-height:max(540px,calc(100svh - 150px));padding:0 22px}
+  .hero.hero-solo .hero-txt{padding:80px 0 104px}
+  .hero.hero-solo .hero-txt h1{font-size:clamp(36px,11vw,52px)}
+  .hero.hero-solo .hero-rule{margin:22px 0 18px}
+  .hero.hero-solo .hero-txt p{margin:0 0 28px}
+}
+@media(prefers-reduced-motion:reduce){.hero.hero-solo::before,.hero.hero-solo::after{animation:none}}
